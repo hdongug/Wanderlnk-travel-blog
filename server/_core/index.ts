@@ -50,15 +50,17 @@ async function startServer() {
     serveStatic(app);
   }
 
-  const preferredPort = parseInt(process.env.PORT || "3000");
+  const preferredPort = parseInt(process.env.PORT || "3000", 10);
+  const host = process.env.HOST || "0.0.0.0";
   const port = await findAvailablePort(preferredPort);
 
   if (port !== preferredPort) {
     console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
   }
 
-  server.listen(port, () => {
+  server.listen(port, host, () => {
     console.log(`Server running on http://localhost:${port}/`);
+    console.log(`Server running on http://127.0.0.1:${port}/`);
   });
 }
 

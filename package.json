@@ -10,7 +10,9 @@
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "test": "vitest run",
-    "db:push": "drizzle-kit generate && drizzle-kit migrate"
+    "db:push": "drizzle-kit generate && drizzle-kit migrate",
+    "dev:local": "HOST=0.0.0.0 PORT=3000 NODE_ENV=development tsx watch server/_core/index.ts",
+    "dev:3000": "PORT=3000 pnpm dev"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.693.0",
